@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="ipad10_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -120,7 +120,7 @@
                                     <action selector="didYouMean:" destination="pK5-Ai-Kzp" eventType="touchUpInside" id="cuq-C2-kl4"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hEe-dF-AFg" customClass="RoundedCornerView" customModule="Wikipedia" customModuleProvider="target">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hEe-dF-AFg" customClass="OverlayView" customModule="Wikipedia" customModuleProvider="target">
                                 <rect key="frame" x="15" y="84.5" width="325" height="388"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0j-C1-Whj">
@@ -199,6 +199,13 @@
                                         <include reference="rqr-ZG-5SB"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="listAndSearchOverlayBottomConstraint" destination="1PC-H2-U7d" id="k5q-zd-Hmc"/>
+                                    <outlet property="listAndSearchOverlayHeightConstraint" destination="WjD-Ab-D2o" id="OKN-Pa-Qga"/>
+                                    <outlet property="listAndSearchOverlaySliderHeightConstraint" destination="0Ku-oI-d8V" id="nAg-hY-Lr9"/>
+                                    <outlet property="listAndSearchOverlaySliderSeparator" destination="IVq-Mn-HaA" id="TVV-4s-rgH"/>
+                                    <outlet property="listAndSearchOverlaySliderView" destination="i0j-C1-Whj" id="WlP-QV-Y0j"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="68" translatesAutoresizingMaskIntoConstraints="NO" id="Gmr-EL-FI6" customClass="WMFNavigationBar">
                                 <rect key="frame" x="0.0" y="0.0" width="1112" height="68"/>
@@ -260,13 +267,13 @@
                                 <exclude reference="9Xk-cg-EQG"/>
                                 <exclude reference="Fqd-WF-erI"/>
                                 <include reference="S5v-Rm-6Vf"/>
+                                <exclude reference="1PC-H2-U7d"/>
                                 <exclude reference="mu2-bC-yEv"/>
                                 <exclude reference="kJv-Kd-ffk"/>
                                 <exclude reference="FX1-9v-ZFx"/>
                                 <include reference="IFe-5L-9c3"/>
                                 <include reference="bVF-HO-Onf"/>
                                 <exclude reference="ua0-k1-E4K"/>
-                                <exclude reference="1PC-H2-U7d"/>
                             </mask>
                         </variation>
                     </view>
@@ -280,12 +287,7 @@
                         <outlet property="extendedNavBarViewHeightContraint" destination="Rb6-54-TnS" id="Vcg-Xk-pkX"/>
                         <outlet property="filterDropDownContainerView" destination="mwy-SF-J1D" id="VkK-Ni-Hy1"/>
                         <outlet property="filterSelectorView" destination="VAs-ZO-0gF" id="Nmc-zk-NHH"/>
-                        <outlet property="listAndSearchOverlayBottomConstraint" destination="1PC-H2-U7d" id="Spi-3n-6kC"/>
                         <outlet property="listAndSearchOverlayContainerView" destination="hEe-dF-AFg" id="pNn-lr-x35"/>
-                        <outlet property="listAndSearchOverlayHeightConstraint" destination="WjD-Ab-D2o" id="4pj-RB-IFd"/>
-                        <outlet property="listAndSearchOverlaySliderHeightConstraint" destination="0Ku-oI-d8V" id="OWR-jH-qkm"/>
-                        <outlet property="listAndSearchOverlaySliderSeparator" destination="IVq-Mn-HaA" id="eEL-Pa-Rlm"/>
-                        <outlet property="listAndSearchOverlaySliderView" destination="i0j-C1-Whj" id="F7F-6f-Zum"/>
                         <outlet property="mapContainerView" destination="EsT-De-Ary" id="BuO-NA-3h4"/>
                         <outlet property="mapListToggle" destination="HrB-BE-o86" id="YpW-51-YCV"/>
                         <outlet property="navigationBar" destination="Gmr-EL-FI6" id="YbU-tL-FC0"/>
@@ -480,6 +482,10 @@
         <scene sceneID="MJK-13-fEj">
             <objects>
                 <viewController id="3NP-wI-pu9" customClass="PlacesSearchViewController" customModule="Wikipedia" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BWA-zU-fry"/>
+                        <viewControllerLayoutGuide type="bottom" id="iKZ-tn-oBd"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vrn-98-hFM">
                         <rect key="frame" x="0.0" y="0.0" width="325" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
